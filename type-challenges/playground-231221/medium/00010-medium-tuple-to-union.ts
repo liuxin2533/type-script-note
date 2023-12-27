@@ -10,7 +10,7 @@
   For example
 
   ```ts
-  type Arr = ['1', '2', '3']
+  type Arr = ['1', '2', '3'] as const
 
   type Test = TupleToUnion<Arr> // expected to be '1' | '2' | '3'
   ```
@@ -20,7 +20,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-type TupleToUnion<T> = any
+type TupleToUnion<T> = T extends Array<infer F> ? F : never
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
